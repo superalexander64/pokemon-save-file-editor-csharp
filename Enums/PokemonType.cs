@@ -8,7 +8,7 @@ namespace PokemonSaveFileEditor.Enums
         POISON = 3,
         GROUND = 4,
         ROCK = 5,
-        BIRDUNUSED = 6,
+        BIRD = 6, // Unused
         BUG = 7,
         GHOST = 8,
         FIRE = 20,
