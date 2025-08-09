@@ -1,0 +1,47 @@
+# Manually added
+Input/
+Output/
+
+# Build artifacts
+bin/
+obj/
+
+# Visual Studio Code settings
+.vscode/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Package directories
+packages/
+*.nupkg
+
+# Build results
+*.dll
+*.exe
+*.app
+*.log
+
+# Others
+*.pdb
+*.cache
+*.dbmdl
+*.bak
+*.log
+
+# Rider / JetBrains IDE
+.idea/
+*.sln.iml
+
+# Mac-specific
+.DS_Store
+
+# Optional: if using global.json to pin SDK versions
+project.lock.json
+global.json
