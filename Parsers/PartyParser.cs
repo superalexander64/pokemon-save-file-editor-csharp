@@ -56,7 +56,7 @@ namespace PokemonSaveFileEditor.Parsers
             }
 
             // Write Pokémon data (each is 44 bytes)
-            PokemonParser.WriteToByteArray(byteArray, party.PartyPokemon);
+            PokemonParser.WriteToByteArray(byteArray, party.PartyPokemon, party.PartyCount);
             
             // Write OT names
             for (int i = 0; i < party.PartyCount; i++)

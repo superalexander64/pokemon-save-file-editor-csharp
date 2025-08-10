@@ -101,7 +101,7 @@ namespace PokemonSaveFileEditor
             saveFile.Party.PartyPokemon[5].Move2 = Move.FLAMETHROWER;
             saveFile.Party.PartyPokemon[5].Move3 = Move.FLY;
             saveFile.Party.PartyPokemon[5].Move4 = Move.EARTHQUAKE;
-            
+
             // Evolve pokemon
             saveFile.Party.EvolvePokemon(3, Species.ALAKAZAM); // KADABRA -> ALAKAZAM 
 
@@ -112,6 +112,24 @@ namespace PokemonSaveFileEditor
             // Write changes back to srm file
             saveData = SaveFileParser.WriteToByteArray(saveData, saveFile);
             saveData = SrmFileIOService.UpdateChecksum(saveData);
+            SrmFileIOService.WriteByteArrayToFile(ModifiedSrmPath, saveData);
+        }
+        
+        public static void CorruptSaveFile()
+        {
+            string OriginalSrmPath = "Input/SaveFile1.srm";
+            string ModifiedSrmPath = "Output/SaveFileCorrupt.srm";
+
+            // Load save data from srm file
+            byte[] saveData = SrmFileIOService.ReadByteArrayFromFile(OriginalSrmPath);
+            SaveFile saveFile = SaveFileParser.ReadFromByteArray(saveData);
+
+            // Evolve pokemon
+            saveFile.Party.EvolvePokemon(0, Species.RAICHU);   // PIKACHU -> RAICHU
+
+            // Write changes back to srm file
+            saveData = SaveFileParser.WriteToByteArray(saveData, saveFile);
+            // saveData = SrmFileIOService.UpdateChecksum(saveData); Don't write checksum to corrupt
             SrmFileIOService.WriteByteArrayToFile(ModifiedSrmPath, saveData);
         }
     }

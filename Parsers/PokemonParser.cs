@@ -8,12 +8,12 @@ namespace PokemonSaveFileEditor.Parsers
         private const int partyDataOffset = 0x2F2C;
         private const int fullPartyOffset = partyDataOffset + 0x08;
         private const int entrySize = 0x2C;   // 44 bytes per Pokémon
-        private const int maxPartySize = 6;
+        private const int maxPartyCount = 6;
 
         public static Pokemon[] ReadFromByteArray(byte[] data)
         {
             int numPartyPokemon = data[partyDataOffset];
-            var party = new Pokemon[maxPartySize];
+            var party = new Pokemon[maxPartyCount];
 
             int Read16(int offset) => (data[offset] << 8) | data[offset + 1];
             int Read24(int offset) => (data[offset] << 16) | (data[offset + 1] << 8) | data[offset + 2];
@@ -72,7 +72,7 @@ namespace PokemonSaveFileEditor.Parsers
             return party;
         }
 
-        public static byte[] WriteToByteArray(byte[] byteArray, Pokemon[] party)
+        public static byte[] WriteToByteArray(byte[] byteArray, Pokemon[] party, int partyCount)
         {
             void Write16(int offset, int value)
             {
@@ -90,7 +90,7 @@ namespace PokemonSaveFileEditor.Parsers
             // Write party count
             byteArray[partyDataOffset] = (byte)party.Length;
 
-            for (int i = 0; i < party.Length; i++)
+            for (int i = 0; i < partyCount; i++)
             {
                 var pokemon = party[i];
                 int baseOffset = fullPartyOffset + i * entrySize;
