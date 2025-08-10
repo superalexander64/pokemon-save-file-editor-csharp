@@ -35,11 +35,11 @@ namespace PokemonSaveFileEditor
             saveFile.Party.PartyPokemon[5].Move4 = Move.EARTHQUAKE;
 
             // Evolve pokemon
-            saveFile.Party.EvolvePokemon(0, Species.RAICHU); // PIKACHU -> RAICHU
-            saveFile.Party.EvolvePokemon(1, Species.GOLEM); // GRAVELER -> GOLEM 
-            saveFile.Party.EvolvePokemon(2, Species.GENGAR); // HAUNTER -> GENGAR 
+            saveFile.Party.EvolvePokemon(0, Species.RAICHU);   // PIKACHU -> RAICHU
+            saveFile.Party.EvolvePokemon(1, Species.GOLEM);    // GRAVELER -> GOLEM 
+            saveFile.Party.EvolvePokemon(2, Species.GENGAR);   // HAUNTER -> GENGAR 
             saveFile.Party.EvolvePokemon(3, Species.ALAKAZAM); // KADABRA -> ALAKAZAM 
-            saveFile.Party.EvolvePokemon(4, Species.MACHAMP); // MACHOKE -> MACHAMP 
+            saveFile.Party.EvolvePokemon(4, Species.MACHAMP);  // MACHOKE -> MACHAMP 
 
             // Duplicate items
             saveFile.BagItems[0].Quantity = 99; // RARECANDY
